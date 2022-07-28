@@ -54,6 +54,11 @@ function parseInputs {
     tfComment=1
   fi
 
+  tgActionsRunAll=0
+  if [ "${INPUT_TG_ACTIONS_RUN_ALL}" == "1" ] || [ "${INPUT_TG_ACTIONS_RUN_ALL}" == "true" ]; then
+    tgActionsRunAll=1
+  fi
+
   tfCLICredentialsHostname=""
   if [ "${INPUT_TF_ACTIONS_CLI_CREDENTIALS_HOSTNAME}" != "" ]; then
     tfCLICredentialsHostname=${INPUT_TF_ACTIONS_CLI_CREDENTIALS_HOSTNAME}

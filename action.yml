@@ -19,6 +19,9 @@ inputs:
     description: 'Terragrunt version to install.'
     required: true
     default: 'latest'
+  tg_actions_run_all:
+    description: 'Terragrunt to run for all child projects'
+    default: false
   tf_actions_cli_credentials_hostname:
     description: 'Hostname for the CLI credentials file.'
     default: 'app.terraform.io'
