@@ -3,7 +3,13 @@
 function terragruntInit {
   # Gather the output of `terragrunt init`.
   echo "init: info: initializing Terragrunt configuration in ${tfWorkingDir}"
-  initOutput=$(${tfBinary} init -input=false ${*} 2>&1)
+  initOutput=""
+  if [ ${tgActionsRunAll} -eq 1] then
+    initOutput=$(${tfBinary} run-all init -input=false ${*} 2>&1)
+  else
+    initOutput=$(${tfBinary} init -input=false ${*} 2>&1)
+  fi
+
   initExitCode=${?}
 
   # Exit code of 0 indicates success. Print the output and exit.
