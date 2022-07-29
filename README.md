@@ -88,6 +88,7 @@ Inputs configure Terraform GitHub Actions to perform different actions.
 | tf_actions_cli_credentials_hostname | Hostname for the CLI credentials file. Defaults to `app.terraform.io`. | `No` |
 | tf_actions_cli_credentials_token    | Token for the CLI credentials file.                        | `No`     |
 | tf_actions_comment                  | Whether or not to comment on GitHub pull requests. Defaults to `true`. | `No` |
+| tg_actions_run_all                  | Whether or not to run command for all sub folders / projects. Defaults to `false`. | `No` |
 | tf_actions_working_dir              | The working directory to change into before executing Terragrunt subcommands. Defaults to the root of the GitHub repository. | `No` |
 | tf_actions_fmt_write                | Whether or not to write `fmt` changes to source files. Defaults to `false`. | `No` |
 
