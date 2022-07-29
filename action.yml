@@ -1,4 +1,4 @@
-name: 'Terragrunt GitHub Actions'
+name: 'AWS Terragrunt GitHub Actions'
 description: 'Runs Terragrunt commands via GitHub Actions.'
 author:  'HashiCorp, Inc. Terraform Team <terraform@hashicorp.com>'
 branding:
