@@ -5,7 +5,7 @@ function terragruntPlan {
   echo "plan: info: planning Terragrunt configuration in ${tfWorkingDir}"
 
   planOutput=""
-  if [ "${tgActionsRunAll}" -eq 1]; then
+  if [ "${tgActionsRunAll}" -eq 1 ]; then
     planOutput=$(${tfBinary} run-all plan -detailed-exitcode -input=false ${*} 2>&1)
   else
     planOutput=$(${tfBinary} plan -detailed-exitcode -input=false ${*} 2>&1)
