@@ -1,6 +1,6 @@
-FROM alpine:3 
+FROM alpine:3
 
-RUN yum install unzip git jq openssh -y
+RUN ["/bin/sh", "-c", "apk add --update --no-cache bash ca-certificates curl git jq openssh"]
 
 RUN mkdir -p /src
 
