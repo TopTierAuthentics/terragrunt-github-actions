@@ -15,7 +15,7 @@ function terragruntApply {
   applyCommentStatus="Failed"
 
   # Exit code of 0 indicates success. Print the output and exit.
-  if [ ${applyExitCode} -eq 0 ]; then
+  if [ "${applyExitCode}" -eq 0 ]; then
     echo "apply: info: successfully applied Terragrunt configuration in ${tfWorkingDir}"
     echo "${applyOutput}"
     echo
@@ -23,7 +23,7 @@ function terragruntApply {
   fi
 
   # Exit code of !0 indicates failure.
-  if [ ${applyExitCode} -ne 0 ]; then
+  if [ "${applyExitCode}" -ne 0 ]; then
     echo "apply: error: failed to apply Terragrunt configuration in ${tfWorkingDir}"
     echo "${applyOutput}"
     echo

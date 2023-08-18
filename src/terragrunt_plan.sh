@@ -5,7 +5,7 @@ function terragruntPlan {
   echo "plan: info: planning Terragrunt configuration in ${tfWorkingDir}"
 
   planOutput=""
-  if [ ${tgActionsRunAll} -eq 1]; then
+  if [ "${tgActionsRunAll}" -eq 1]; then
     planOutput=$(${tfBinary} run-all plan -detailed-exitcode -input=false ${*} 2>&1)
   else
     planOutput=$(${tfBinary} plan -detailed-exitcode -input=false ${*} 2>&1)
@@ -16,7 +16,7 @@ function terragruntPlan {
   planCommentStatus="Failed"
 
   # Exit code of 0 indicates success with no changes. Print the output and exit.
-  if [ ${planExitCode} -eq 0 ]; then
+  if [ "${planExitCode}" -eq 0 ]; then
     echo "plan: info: successfully planned Terragrunt configuration in ${tfWorkingDir}"
     echo "${planOutput}"
     echo
@@ -26,7 +26,7 @@ function terragruntPlan {
 
   # Exit code of 2 indicates success with changes. Print the output, change the
   # exit code to 0, and mark that the plan has changes.
-  if [ ${planExitCode} -eq 2 ]; then
+  if [ "${planExitCode}" -eq 2 ]; then
     planExitCode=0
     planHasChanges=true
     planCommentStatus="Success"
@@ -43,7 +43,7 @@ function terragruntPlan {
   fi
 
   # Exit code of !0 indicates failure.
-  if [ ${planExitCode} -ne 0 ]; then
+  if [ "${planExitCode}" -ne 0 ]; then
     echo "plan: error: failed to plan Terragrunt configuration in ${tfWorkingDir}"
     echo "${planOutput}"
     echo
