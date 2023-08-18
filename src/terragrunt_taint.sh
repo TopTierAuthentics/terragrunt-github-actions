@@ -3,9 +3,9 @@
 function terragruntTaint {
   # Gather the output of `terragrunt taint`.
   echo "taint: info: tainting terragrunt configuration in ${tfWorkingDir}"
-  
+
   taintOutput=""
-  if [ ${tgActionsRunAll} -eq 1] then
+  if [ ${tgActionsRunAll} -eq 1]; then
     taintOutput=$(for resource in ${*}; do ${tfBinary} run-all taint -allow-missing $resource; done 2>&1)
   else
     taintOutput=$(for resource in ${*}; do ${tfBinary} taint -allow-missing $resource; done 2>&1)
