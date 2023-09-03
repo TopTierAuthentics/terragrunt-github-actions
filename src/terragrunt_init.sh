@@ -4,7 +4,7 @@ function terragruntInit {
   # Gather the output of `terragrunt init`.
   echo "init: info: initializing Terragrunt configuration in ${tfWorkingDir}"
   initOutput=""
-  if ["${tgActionsRunAll}" == 1]; then
+  if [ "${tgActionsRunAll}" == 1 ]; then
     initOutput="$(${tfBinary} run-all init --terragrunt-source -upgrade ../../../modules//  -input=false ${*} 2>&1)"
   else
     initOutput="$(${tfBinary} init -input=false ${*} 2>&1)"
@@ -13,7 +13,7 @@ function terragruntInit {
   initExitCode=${?}
 
   # Exit code of 0 indicates success. Print the output and exit.
-  if ["${initExitCode}" == 0]; then
+  if [ "${initExitCode}" == 0 ]; then
     echo "init: info: successfully initialized Terragrunt configuration in ${tfWorkingDir}"
     echo "${initOutput}"
     echo
@@ -26,7 +26,7 @@ function terragruntInit {
   echo
 
   # Comment on the pull request if necessary.
-  if ["$GITHUB_EVENT_NAME" == "pull_request"] && ["${tfComment}" == "1"]; then
+  if [ "$GITHUB_EVENT_NAME" == "pull_request" ] && [ "${tfComment}" == "1" ]; then
     initCommentWrapper="#### \`${tfBinary} init\` Failed
 
 \`\`\`
