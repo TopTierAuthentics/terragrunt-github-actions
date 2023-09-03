@@ -5,7 +5,7 @@ function terragruntApply {
   echo "apply: info: applying Terragrunt configuration in ${tfWorkingDir}"
   applyOutput=""
   if [ "${tgActionsRunAll}" -eq 1 ]; then
-    applyOutput=$(${tfBinary} run-all apply --terragrunt-non-interactive -input=false ${*} 2>&1)
+    applyOutput=$(${tfBinary} run-all apply --terragrunt-non-interactive --terragrunt-source ../../../modules// -input=false ${*} 2>&1)
   else
     applyOutput=$(${tfBinary} apply --terragrunt-non-interactive -input=false ${*} 2>&1)
   fi

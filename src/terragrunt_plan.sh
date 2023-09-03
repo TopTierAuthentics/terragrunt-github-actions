@@ -6,7 +6,7 @@ function terragruntPlan {
 
   planOutput=""
   if [ "${tgActionsRunAll}" -eq 1 ]; then
-    planOutput=$(${tfBinary} run-all plan -detailed-exitcode -input=false ${*} 2>&1)
+    planOutput=$(${tfBinary} run-all plan -detailed-exitcode --terragrunt-source ../../../modules//  -input=false ${*} 2>&1)
   else
     planOutput=$(${tfBinary} plan -detailed-exitcode -input=false ${*} 2>&1)
   fi
