@@ -5,7 +5,7 @@ function terragruntInit {
   echo "init: info: initializing Terragrunt configuration in ${tfWorkingDir}"
   initOutput=""
   if [ "${tgActionsRunAll}" == 1 ]; then
-    initOutput="$(${tfBinary} run-all init --terragrunt-source -upgrade ../../../modules//  -input=false ${*} 2>&1)"
+    initOutput="$(${tfBinary} run-all init --terragrunt-source ../../../modules// -upgrade -input=false ${*} 2>&1)"
   else
     initOutput="$(${tfBinary} init -input=false ${*} 2>&1)"
   fi
