@@ -171,41 +171,8 @@ function main {
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
   
   if [ -n "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
-    echo "Authenticating with GCP..."
-    
-    # Verify credentials file exists
-    if [ ! -f "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
-      echo "Credentials file not found at ${GOOGLE_APPLICATION_CREDENTIALS}"
-      exit 1
-    fi
-    
-    # Activate service account
-    echo "Activating service account..."
-    gcloud auth activate-service-account --key-file="${GOOGLE_APPLICATION_CREDENTIALS}" || {
-      echo "Failed to activate service account"
-      exit 1
-    }
-    
-    # Set project
-    echo "Setting GCP project..."
-    gcloud config set project "${PROJECT_ID}" || {
-      echo "Failed to set project"
-      exit 1
-    }
-    
-    # Get cluster credentials
-    echo "Getting cluster credentials..."
-    gcloud container clusters get-credentials "${CLUSTER_NAME}" --region "${REGION}" --project "${PROJECT_ID}" || {
-      echo "Failed to get cluster credentials"
-      exit 1
-    }
-    
-    # Verify kubectl access
-    echo "Verifying cluster access..."
-    kubectl get ns &> /dev/null || {
-      echo "Failed to access cluster"
-      exit 1
-    }
+    gcloud auth activate-service-account --key-file="${GOOGLE_APPLICATION_CREDENTIALS}"
+    gcloud container clusters get-credentials "${CLUSTER_NAME}" --region "${REGION}" --project "${PROJECT_ID}"
   fi
 
   case "${tfSubcommand}" in
