@@ -1,6 +1,7 @@
 FROM google/cloud-sdk:alpine
 
-RUN apk add --update --no-cache bash ca-certificates curl git jq openssh
+RUN apk add --update --no-cache bash ca-certificates curl git jq openssh && \
+    gcloud components install kubectl gke-gcloud-auth-plugin
 
 RUN mkdir -p /src
 
