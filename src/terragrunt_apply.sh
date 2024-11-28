@@ -1,7 +1,12 @@
 #!/bin/bash
 
 function terragruntApply {
-  # Gather the output of `terragrunt apply`.
+   # Authenticate with GKE
+  echo "Authenticating with GKE cluster ${cluster_name} in region ${region}"
+  gcloud auth activate-service-account --key-file="${google_credentials}"
+  gcloud container clusters get-credentials "${cluster_name}" --region "${region}" --project "${project_id}"
+
+# Gather the output of `terragrunt apply`.
   echo "apply: info: applying Terragrunt configuration in ${tfWorkingDir}"
   applyOutput=""
   if [ "${tgActionsRunAll}" -eq 1 ]; then
