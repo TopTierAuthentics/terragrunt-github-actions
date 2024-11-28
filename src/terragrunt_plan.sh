@@ -1,10 +1,10 @@
 #!/bin/bash
 
 function terragruntPlan {
-   # Authenticate with GKE
-  echo "Authenticating with GKE cluster ${cluster_name} in region ${region}"
-  gcloud auth activate-service-account --key-file="${google_credentials}"
-  gcloud container clusters get-credentials "${cluster_name}" --region "${region}" --project "${project_id}"
+# Authenticate with GKE using INPUT_ prefixed environment variables
+  echo "Authenticating with GKE cluster ${INPUT_CLUSTER_NAME} in region ${INPUT_REGION}"
+  gcloud auth activate-service-account --key-file="${INPUT_GOOGLE_CREDENTIALS}"
+  gcloud container clusters get-credentials "${INPUT_CLUSTER_NAME}" --region "${INPUT_REGION}" --project "${INPUT_PROJECT_ID}"
 
 # Gather the output of `terragrunt plan`.
   echo "plan: info: planning Terragrunt configuration in ${tfWorkingDir}"
