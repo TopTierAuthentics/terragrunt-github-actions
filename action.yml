@@ -36,6 +36,18 @@ inputs:
   tf_actions_fmt_write:
     description: "Write Terragrunt fmt changes to source files."
     default: false
+  google_credentials:
+    description: "Google Cloud credentials"
+    required: false
+  cluster_name:
+    description: "GKE cluster name"
+    required: false
+  region:
+    description: "GCP region"
+    required: false
+  project_id:
+    description: "GCP project ID"
+    required: false
 outputs:
   tf_actions_output:
     description: "The Terragrunt outputs in JSON format."
