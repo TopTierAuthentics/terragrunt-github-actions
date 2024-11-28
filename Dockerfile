@@ -1,6 +1,7 @@
-FROM alpine:3
+FROM gcr.io/google.com/cloudsdktools/cloud-sdk:alpine
 
-RUN ["/bin/sh", "-c", "apk add --update --no-cache bash ca-certificates curl git jq openssh"]
+RUN apk add --update --no-cache bash ca-certificates curl git jq openssh && \
+    gcloud components install gke-gcloud-auth-plugin
 
 RUN mkdir -p /src
 
