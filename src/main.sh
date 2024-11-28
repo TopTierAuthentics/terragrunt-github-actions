@@ -169,6 +169,11 @@ function main {
   configureCLICredentials
   installTerraform
   cd ${GITHUB_WORKSPACE}/${tfWorkingDir}
+  
+  if [ -n "${GOOGLE_APPLICATION_CREDENTIALS}" ]; then
+    gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
+    gcloud container clusters get-credentials ${CLUSTER_NAME} --region ${REGION} --project ${PROJECT_ID}
+  fi
 
   case "${tfSubcommand}" in
     fmt)
